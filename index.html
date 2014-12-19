@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title>cards</title>
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script language="Javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script language="Javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+		<style type="text/css">
+
+			body {
+				padding: 0;
+				margin: 0;
+			}
+
+			.background_texture {
+				width: 100%;
+				height: 100%;
+				opacity: 0.05;
+				top: 0;
+				left: 0;
+				position: absolute;
+				background-image: url("paper.png");
+				z-index: -1;
+			}
+
+			.background_texture.private {
+				opacity: 0.2;
+			}
+			.private {
+				height: 20%;
+				width: 100%;
+				top: 80%;
+				left: 0;
+				position: absolute;
+				opacity: 1;
+				background-color: #BBDEFB;
+				z-index: -2;
+				box-shadow: 0 1rem 3rem rgba(0,0,0,1);
+			}
+
+		</style>
+
+		<style type="text/css">
+
+			@import 'cards/cards.css';
+
+			card {
+				display: inline-block;
+				background-repeat: no-repeat!important;
+				background-size: 100% 100%!important;
+				width: calc(15rem * 23/32);
+				height: calc(15rem );
+				border: 0.1rem solid rgba(0,0,0,.12);
+				border-radius: 1rem;
+				box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.24);
+				position: absolute;
+			}
+
+			card:hover {
+				margin-top: -1rem;
+				box-shadow: 0 calc(1rem + 0.25rem) 1.75rem rgba(0,0,0,0.24);
+				-webkit-filter: brightness(1.1) saturate(150%);
+				border-color: rgba(0,0,0,.24);
+			}
+
+			card:focus {
+				margin-top: -2rem;
+				outline: 0;
+				z-index: 999;
+				box-shadow: 0 calc(2rem + 0.25rem) 2.75rem rgba(0,0,0,0.24);
+			}
+
+			</style>
+
+	</head>
+
+	<body>
+
+		<card tabindex=0 class="c-2" style="left: 4rem; top: 4rem; "></card>
+		<card tabindex=0 class="s-5" style="left: 6rem; top: 4rem; "></card>
+		<card tabindex=0 class="d-9" style="left: 8rem; top: 4rem; "></card>
+		<card tabindex=0 class="h-k" style="left: 10rem; top: 4rem; "></card>
+		<card tabindex=0 class="joker-1" style="left: 12rem; top: 4rem; "></card>
+		<card tabindex=0 class="h-5" style="left: 14rem; top: 4rem; "></card>
+		<card tabindex=0 class="c-6" style="left: 16rem; top: 4rem; "></card>
+		<card tabindex=0 class="s-7" style="left: 18rem; top: 4rem; "></card>
+
+
+		<card tabindex=0 class="s-6" style="left: 44rem; top: 4rem; "></card>
+		<card tabindex=0 class="d-4" style="left: 46rem; top: 4rem; "></card>
+		<card tabindex=0 class="c-3" style="left: 48rem; top: 4rem; "></card>
+		<card tabindex=0 class="h-6" style="left: 50rem; top: 4rem; "></card>
+		<card tabindex=0 class="d-7" style="left: 52rem; top: 4rem; "></card>
+		<card tabindex=0 class="h-3" style="left: 54rem; top: 4rem; "></card>
+		<card tabindex=0 class="c-10" style="left: 56rem; top: 4rem; "></card>
+		<card tabindex=0 class="s-8" style="left: 58rem; top: 4rem; "></card>
+
+		<div class="private"></div>
+		<div class="background_texture private"></div>
+
+
+	</body>
+
+</html>
