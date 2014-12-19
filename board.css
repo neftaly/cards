@@ -1,0 +1,32 @@
+@import 'cards/cards.css';
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "Roboto", sans-serif;
+	perspective: 50%;
+}
+
+#gameboard {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.private {
+	z-index: -1;
+	height: 20rem;
+	width: 65rem;
+	top: 30rem;
+	left: 4rem;
+	text-align: center;
+	position: absolute;
+	background-color: #BBDEFB;
+	box-shadow: 0 0 1rem rgba(0,0,0,.24);
+	color: rgba(255,255,255,0.25);
+	font-size: 4rem;
+	letter-spacing: -0.25rem;
+	border-radius: 0.25rem;
+}

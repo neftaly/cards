@@ -7,120 +7,126 @@
 		<meta charset="UTF-8"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<script language="Javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script language="Javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="interact-1.1.3.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.8.0/ramda.js"></script>
 
-		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
 
-		<style type="text/css">
-
-			body {
-				padding: 0;
-				margin: 0;
-				font-family: "Roboto", sans-serif;
-    			perspective: 50%;
-			}
-
-			.private {
-				height: 20rem;
-				width: 65rem;
-				top: 30rem;
-				left: 4rem;
-				text-align: center;
-				position: absolute;
-				background-color: #BBDEFB;
-				box-shadow: 0 0 1rem rgba(0,0,0,.24);
-				color: rgba(255,255,255,0.25);
-				font-size: 4rem;
-				letter-spacing: -0.25rem;
-				border-radius: 0.25rem;
-			}
-
-		</style>
-
-		<style type="text/css">
-
-			@import 'cards/cards.css';
-
-			card {
-				display: inline-block;
-				background-repeat: no-repeat!important;
-				background-size: 100% 100%!important;
-				width: calc(15rem * 23/32);
-				height: calc(15rem );
-				border: 0.1rem solid rgba(0,0,0,.12);
-				border-radius: 1rem;
-				box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.24);
-				position: absolute;
-			
-				transition: all 0.3s;
-				transform-style: preserve-3d;
-			}
-
-			card:hover {
-				margin-top: -1rem;
-				box-shadow: 0 calc(1rem + 0.25rem) 1.75rem rgba(0,0,0,0.24);
-				-webkit-filter: saturate(150%);
-				margin-left: -0.1rem;
-				border: 0.2rem solid rgba(0,0,0,.24);	
-			}
-
-			card:focus {
-				margin-top: -2rem;
-				outline: 0;
-				z-index: 999!important;
-				box-shadow: 0 calc(2rem + 0.25rem) 2.75rem rgba(0,0,0,0.24);
-			}
-
-			card:focus:hover {
-				margin-top: -2.1rem;
-			}
-
-			card.rotate:hover, card.flip:hover { 
-				z-index: 99!important;
-			}
-
-			card.rotate:hover {
-				transform: rotateZ(3deg)
-			}
-			card.rotate.r90:focus {
-				transform: rotateZ(90deg)
-			}
-			card.rotate.r180:focus {
-				transform: rotateZ(180deg)
-			}
-			card.rotate.r270:focus {
-				transform: rotateZ(270deg)
-			}
-
-			card.flip:hover {
-				transform: rotateY(45deg)
-			}
-			card.flip:focus {
-				transform: rotateY(180deg)
-			}
-
-			</style>
+		<script type="text/javascript" src="board.js"></script>
+		<link type="text/css" rel="stylesheet" href="board.css">
 
 	</head>
 
 	<body>
 
-		<card tabindex=0 class="c-2" style="left: 4rem; top: 4rem; z-index: 1; "></card>
-		<card tabindex=0 class="s-5" style="left: 6rem; top: 4rem; z-index: 2; "></card>
-		<card tabindex=0 class="d-9" style="left: 8rem; top: 4rem; z-index: 3; "></card>
-		<card tabindex=0 class="h-k" style="left: 10rem; top: 4rem; z-index: 4; "></card>
-		<card tabindex=0 class="joker-1" style="left: 12rem; top: 4rem; z-index: 5; "></card>
-		<card tabindex=0 class="h-5" style="left: 14rem; top: 4rem; z-index: 6; "></card>
-		<card tabindex=0 class="c-6" style="left: 16rem; top: 4rem; z-index: 7; "></card>
-		<card tabindex=0 class="s-7" style="left: 18rem; top: 4rem; z-index: 8; "></card>
-
-
-		<card tabindex=0 class="s-6 rotate r90" style="left: 34rem; top: 4rem; z-index: 9; "></card>
-		<card tabindex=0 class="c-3 rotate r180" style="left: 44rem; top: 4rem; z-index: 10; "></card>
-		<card tabindex=0 class="d-4 flip" style="left: 54rem; top: 4rem; z-index: 11; "></card>
-
+		<div id="gameboard"></div>
 		<div class="private">Private play area</div>
+
+<script>
+
+pieces = [
+	{
+		type: "card",
+		subType: "c-2",
+		uuid: "12hj1234ds",
+		element: false,
+		coords: {
+			x: 100,
+			y: 100,
+			rotation: 0,
+			side: 0
+		}
+	},
+	{
+		type: "card",
+		subType: "h-4",
+		uuid: "126587564ds",
+		element: false,
+		coords: {
+			x: 150,
+			y: 100,
+			rotation: 0,
+			side: 0
+		}
+	},
+	{
+		type: "card",
+		subType: "s-3",
+		uuid: "12h89089",
+		element: false,
+		coords: {
+			x: 200,
+			y: 100,
+			rotation: 0,
+			side: 0
+		}
+	},
+	{
+		type: "card",
+		subType: "joker-1",
+		uuid: "789897234ds",
+		element: false,
+		coords: {
+			x: 250,
+			y: 100,
+			rotation: 0,
+			side: 0
+		}
+	},
+	{
+		type: "card",
+		subType: "h-k",
+		uuid: "127643437",
+		element: false,
+		coords: {
+			x: 300,
+			y: 100,
+			rotation: 0,
+			side: 0
+		}
+	},
+		{
+		type: "card",
+		subType: "s-9",
+		uuid: "12h89089",
+		element: false,
+		coords: {
+			x: 200,
+			y: 100,
+			rotation: 0,
+			side: 0
+		}
+	},
+	{
+		type: "card",
+		subType: "joker-2",
+		uuid: "789897234ds",
+		element: false,
+		coords: {
+			x: 250,
+			y: 100,
+			rotation: 0,
+			side: 0
+		}
+	},
+	{
+		type: "card",
+		subType: "c-6",
+		uuid: "127643437",
+		element: false,
+		coords: {
+			x: 300,
+			y: 100,
+			rotation: 0,
+			side: 0
+		}
+	},
+
+];
+
+pieces.map(board.add);
+
+</script>
 
 	</body>
 

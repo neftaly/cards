@@ -1,3 +1,74 @@
+/*
+Generic card definitions
+*/
+
+card {
+	display: inline-block;
+	background-repeat: no-repeat!important;
+	background-size: 100% 100%!important;
+	width: calc(15rem * 23/32);
+	height: calc(15rem );
+	border: 0.1rem solid rgba(0,0,0,.12);
+	border-radius: 1rem;
+	box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.24);
+	position: absolute;
+
+	transition: all 0.3s;
+	transform-style: preserve-3d;
+}
+
+card:hover {
+	margin-top: -1rem;
+	box-shadow: 0 calc(1rem + 0.25rem) 1.75rem rgba(0,0,0,0.24);
+	-webkit-filter: saturate(150%);
+	margin-left: -0.1rem;
+	border: 0.2rem solid rgba(0,0,0,.24);	
+}
+
+card.active {
+	margin-top: -2rem;
+	outline: 0;
+	z-index: 999!important;
+	box-shadow: 0 calc(2rem + 0.25rem) 2.75rem rgba(0,0,0,0.24);
+}
+
+card.active.interacting {
+	transition: none!important;
+}
+
+card.active:hover {
+	margin-top: -2.1rem;
+}
+
+card.rotate:hover, card.flip:hover { 
+	z-index: 99!important;
+}
+
+card.rotate:hover {
+	transform: rotateZ(3deg)
+}
+card.rotate.r90.active {
+	transform: rotateZ(90deg)
+}
+card.rotate.r180.active {
+	transform: rotateZ(180deg)
+}
+card.rotate.r270.active {
+	transform: rotateZ(270deg)
+}
+
+card.flip:hover {
+	transform: rotateY(45deg)
+}
+card.flip.active {
+	transform: rotateY(180deg)
+}
+
+
+/*
+Specific card definitions
+*/
+
 /* Clubs */
 card.c-2 {
 	background-image: url("c-2.jpg");
