@@ -1,11 +1,21 @@
+/*
+
+Handles views & user interaction.
+
+Talks to the state model:
+* Sends changes made to the game board by the user
+* Observes the state model, and updates the game board accordingly
+
+*/
+
 "use strict";
 
-var board = function () {
+
+"use strict";
+
+var view = function () {
 
 	this.add = function (piece) {
-
-		// Setup gamestate element
-		this.gamestate[piece.uuid] = piece;
 
 		// Setup DOM element
 		var element = document.createElement(piece.type);
@@ -16,37 +26,50 @@ var board = function () {
 
 		piece.element = element;
 
-		this.position(piece.uuid, piece.coords);
+		this.reposition(piece.uuid, piece.coords);
 
 		return piece;
-
 
 	}.bind(this);
 
 
-	this.position = function (uuid, coords) {
-		var piece = this.gamestate[uuid];
-		piece.coords = coords;
-		// rearrange board.gamestate, putting [uuid] in correct position
-		// position = piece.coords.z
-		// ....
+	this.reposition = function (uuid) {
+		coords = board.state[uuid].coords;
 
-		//piece.element.style.left = coords.x + "px";
-		//piece.element.style.top = coords.y + "px";
+		piece.element.style.left = coords.x + "px";
+		piece.element.style.top = coords.y + "px";
+		piece.element.style.zIndex = coords.z;
 		return true;
 
 	}.bind(this);
 
 
-	// TODO: Setup observer pattern for gamestate
-	this.gamestate = [];
-	// DOM element which game pieces are drawn in
-	this.element = function () { return document.getElementById("gameboard"); }
 
-	return this;
 
-}.apply({});
 
+
+	// Observe changes to the gamestate
+	//Object.observe(board.state, function(changes) {
+	//	console.log(changes);
+	//});
+
+}.apply({}||view);
+
+
+
+
+
+
+
+
+
+
+/*
+
+PROTOTYPE ONLY
+UI handler - needs to be rewritten
+
+*/
 
 
 function stopInteractingWithElement(event) {
