@@ -1,6 +1,6 @@
 /*
 
-Handles views & user interaction.
+Handles user interaction.
 
 Talks to the state model:
 * Sends changes made to the game board by the user
@@ -10,10 +10,10 @@ Talks to the state model:
 
 "use strict";
 
+// Init controller (for async)
+var view = view || function () { return this; }.apply({});
 
-"use strict";
-
-var view = function () {
+view.ui = function () {
 
 	this.add = function (piece) {
 
@@ -49,11 +49,13 @@ var view = function () {
 
 
 	// Observe changes to the gamestate
-	//Object.observe(board.state, function(changes) {
-	//	console.log(changes);
-	//});
+	Object.observe(board.state, function(changes) {
+		changes.forEach(function(change) {
+			//console.log(change.type, change.name, change.oldValue);
+    	});
+	});
 
-}.apply({}||view);
+}.apply({}||view.ui);
 
 
 
