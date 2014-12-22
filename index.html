@@ -7,12 +7,24 @@
 		<meta charset="UTF-8"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<!-- external libs -->
 		<script type="text/javascript" src="interact-1.1.3.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.8.0/ramda.js"></script>
 
 		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
 
-		<script type="text/javascript" src="board.js"></script>
+		<!-- app code -->
+		<script type="text/javascript" src="util.js"></script>
+
+		<script type="text/javascript" src="model.js"></script>
+		<script type="text/javascript" src="model.state.js"></script>
+
+		<script type="text/javascript" src="view.local.js"></script>
+		<script type="text/javascript" src="view.remote.js"></script>
+
+		<script type="text/javascript" src="init.js" defer></script>
+
+		<!-- app stylesheets -->
 		<link type="text/css" rel="stylesheet" href="board.css">
 
 	</head>
@@ -21,112 +33,6 @@
 
 		<div id="gameboard"></div>
 		<div class="private">Private play area</div>
-
-<script>
-
-pieces = [
-	{
-		type: "card",
-		subType: "c-2",
-		uuid: "12hj1234ds",
-		element: false,
-		coords: {
-			x: 100,
-			y: 100,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		subType: "h-4",
-		uuid: "126587564ds",
-		element: false,
-		coords: {
-			x: 150,
-			y: 100,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		subType: "s-3",
-		uuid: "12h89089",
-		element: false,
-		coords: {
-			x: 200,
-			y: 100,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		subType: "joker-1",
-		uuid: "789897234ds",
-		element: false,
-		coords: {
-			x: 250,
-			y: 100,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		subType: "h-k",
-		uuid: "127643437",
-		element: false,
-		coords: {
-			x: 300,
-			y: 100,
-			rotation: 0,
-			side: 0
-		}
-	},
-		{
-		type: "card",
-		subType: "s-9",
-		uuid: "12h89089",
-		element: false,
-		coords: {
-			x: 200,
-			y: 100,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		subType: "joker-2",
-		uuid: "789897234ds",
-		element: false,
-		coords: {
-			x: 250,
-			y: 100,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		subType: "c-6",
-		uuid: "127643437",
-		element: false,
-		coords: {
-			x: 300,
-			y: 100,
-			rotation: 0,
-			side: 0
-		}
-	},
-
-];
-
-pieces.map(board.add);
-
-</script>
 
 	</body>
 
