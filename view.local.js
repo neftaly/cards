@@ -15,10 +15,18 @@ var view = view || function () { return this; }.apply({});
 
 view.ui = function () {
 
+	// Identify the context when changing the model
+	var context = "local"; 
+
+
 	this.add = function (piece) {
+		return board.add (context, piece);
+	}
+
+	this.Xadd = function (piece) {
 
 		// Setup DOM element
-		var element = document.createElement(piece.type);
+		var element = document.createElement(piece.class);
 		board.element().appendChild(element);
 		element.className = piece.subType + " draggable";
 		element.id = piece.uuid;
@@ -54,6 +62,8 @@ view.ui = function () {
 			//console.log(change.type, change.name, change.oldValue);
     	});
 	});
+
+	return this;
 
 }.apply({}||view.ui);
 

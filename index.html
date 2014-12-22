@@ -31,122 +31,23 @@
 <script>
 
 pieces = [
-	{
-		type: "card",
-		source: "web",
-		subType: "c-2",
+	board.piece({
+		type: "c-2",
 		uuid: "11",
-		element: false,
-		coords: {
-			x: 100,
-			y: 100,
-			z: 0,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		source: "web",
-		subType: "h-4",
-		uuid: "22",
-		element: false,
-		coords: {
-			x: 150,
-			y: 100,
-			z: 0,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		source: "web",
-		subType: "s-3",
-		uuid: "12h89089",
-		element: false,
-		coords: {
-			x: 200,
-			y: 100,
-			z: 0,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		source: "web",
-		subType: "joker-1",
-		uuid: "789897234ds",
-		element: false,
-		coords: {
-			x: 250,
-			y: 100,
-			z: 0,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		source: "web",
-		subType: "h-k",
-		uuid: "127643437",
-		element: false,
-		coords: {
-			x: 300,
-			y: 100,
-			z: 0,
-			rotation: 0,
-			side: 0
-		}
-	},
-		{
-		type: "card",
-		source: "web",
-		subType: "s-9",
-		uuid: "12h89089",
-		element: false,
-		coords: {
-			x: 200,
-			y: 100,
-			z: 0,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		source: "web",
-		subType: "joker-2",
-		uuid: "789897234ds",
-		element: false,
-		coords: {
-			x: 250,
-			y: 100,
-			z: 0,
-			rotation: 0,
-			side: 0
-		}
-	},
-	{
-		type: "card",
-		source: "web",
-		subType: "c-6",
-		uuid: "127643437",
-		element: false,
-		coords: {
-			x: 300,
-			y: 100,
-			z: 0,
-			rotation: 0,
-			side: 0
-		}
-	},
+	}),
+	board.piece({
+		type: "d-9",
+	}),
+	board.piece({
+		type: "h-4",
+	}),
+	board.piece({
+		type: "s-6",
+	})
 
 ];
 
-pieces.map(board.add);
+pieces.map(view.ui.add);
 
 </script>
 
