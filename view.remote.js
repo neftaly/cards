@@ -6,13 +6,15 @@ Handles remote peer interaction.
 
 "use strict";
 
-// Init controller (for async)
-var view = view || function () { return this; }.apply({});
-
 view.remote = function () {
+	this.context = "remote";
 
-	// Identify the context when changing the model
-	var context = "remote"; 
+	// draw piece whenever a new piece is added
+	model.addEventListener("update", function (context, object) {
+		if (context !== this.context) {
+			console.log(context, "updated", object)
+		}
+	}.bind(this));
 
 
 	return this;

@@ -10,32 +10,6 @@ Staging ground only - code should be moved into more appropriate places
 
 var util = function () {
 
-	/*
-	Convert object to assoc array
-	*/
-	/*this.toArray = function (object, recursive) {
-
-		// Check if `variable` can be recursed
-		var recursable = function (variable) {
-			return (
-				typeof variable === "object" 
-				|| typeof variable === "array"
-			);
-		}
-
-		var array = [];
-		Object.keys(object).map(function (key) {
-			if (recursive && recursable(object[key])) {
-				array[key] = this.toArray(object[key], true);
-			} else {
-				array[key] = object[key];
-			}
-		}.bind(this));
-
-		return array;
-
-	}.bind(this);*/
-
 	// Random UUID generator
 	this.UUID = function(seed) {
 		var seed = seed || Math.random(); // Insecure if seed undefined
@@ -51,7 +25,48 @@ var util = function () {
 		return UUID;
 	}
 
+	
+	/*
+	Convert object to assoc array
+	*/
+	/*this.toArray = function (object, recursive) {
+
+		// Check if `variable` can be recursed
+		var recursable = function (variable) {
+			return (
+				typeof variable === "object" 
+				|| typeof variable === "array"
+			);
+		}
+
+		var array = [];
+		Object.keys(object).forEach(function (key) {
+			if (recursive && recursable(object[key])) {
+				array[key] = this.toArray(object[key], true);
+			} else {
+				array[key] = object[key];
+			}
+		}.bind(this));
+
+		return array;
+
+	}.bind(this);*/
+
+
+	/*
+	// Attach a collection of functions to a module.
+	this.attach = function (source, destination) {
+		Object.keys(source).forEach(function(name) {
+			if (typeof destination[name] !== "undefined") {
+				throw new Error("attach: function "+name+" already exists");
+			}
+			destination[name] = source[name].bind(destination);
+		});
+		return destination;
+	}
+	// controller.local = util.attach(controller.crud, controller.local);
+	*/
+
 
 	return this;
-
 }.apply(util||{});

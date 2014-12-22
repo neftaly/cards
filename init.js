@@ -2,27 +2,25 @@
 
 App init code. 
 
-Not run until everything has loded.
+Not run until everything has loaded.
 
 */
 
 initInteract();
 
-pieces = [
-	board.piece({
+[
+	{
 		type: "c-2",
 		uuid: "11",
-	}),
-	board.piece({
+	},
+	{
 		type: "d-9",
-	}),
-	board.piece({
+	},
+	{
 		type: "h-4",
-	}),
-	board.piece({
+	},
+	{
 		type: "s-6",
-	})
-
-];
-
-pieces.map(view.local.add);
+	}
+]
+	.forEach(controller.remote.crud.add);

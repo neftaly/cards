@@ -6,36 +6,7 @@ Model handling code
 
 "use strict";
 
-var board = function () {
-
-	/*
-	Add a piece
-	*/
-	this.add = function (context, piece) {
-		/*
-			Check if already exists
-		*/
-		this.state[piece.uuid] = piece;
-		/*
-			Attach observer
-			...
-			...
-		*/
-		this.triggerEvent(context, "add", this.state[piece.uuid]);
-	}.bind(this);
-
-
-	/*
-	Move a piece
-	*/
-	this.reposition = function (uuid, coords) {
-		var piece = this.state[uuid];
-		piece.coords = util.toArray(coords);
-		// rearrange board.state, putting [uuid] in correct position
-		// position = piece.coords.z
-		// ....
-	}.bind(this);
-
+var model = function () {
 
 	/*
 	Prototype for creating a new piece 
@@ -58,10 +29,13 @@ var board = function () {
 
 	// DOM element which game pieces are drawn in
 	Object.defineProperty(this, "element", { 
-		get: function() { return document.getElementById("gameboard"); } 
-	} );
+		get: function() { return document.getElementById("gameboard"); }
+	});
+
+
+	this.state = {}; // Gamestate object
+	this.events = {}; // State change events
 
 
 	return this;
-
-}.apply(board||{});
+}.apply(model||{});
