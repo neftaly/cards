@@ -1,6 +1,6 @@
 /*
 
-Handles the state model.
+Model handling code
 
 */
 
@@ -15,13 +15,13 @@ var board = function () {
 		/*
 			Check if already exists
 		*/
-		state[piece.uuid] = piece;
+		this.state[piece.uuid] = piece;
 		/*
 			Attach observer
+			...
+			...
 		*/
-		/*
-			Fire event
-		*/
+		this.triggerEvent(context, "add", this.state[piece.uuid]);
 	}.bind(this);
 
 
@@ -29,7 +29,7 @@ var board = function () {
 	Move a piece
 	*/
 	this.reposition = function (uuid, coords) {
-		var piece = state[uuid];
+		var piece = this.state[uuid];
 		piece.coords = util.toArray(coords);
 		// rearrange board.state, putting [uuid] in correct position
 		// position = piece.coords.z
@@ -61,23 +61,7 @@ var board = function () {
 		get: function() { return document.getElementById("gameboard"); } 
 	} );
 
-	var state = {};
-	this.state = state; // TODO: Make this.state read-only.
-
-	// State change events
-	var events = {
-		local: { // Events from the UI, caused by the client
-			add: new CustomEvent("add", { "detail": "local" }), // Piece added to board
-			move: new CustomEvent("move", { "detail": "local" }) // Piece X/Y/ changed
-			// bubble - piece moved to top of stack
-			// update - 
-		},
-		remote: { // Events from the network, caused by a peer
-			add: new CustomEvent("add", { "detail": "local" }),
-			move: new CustomEvent("move", { "detail": "local" })
-		},
-	}
 
 	return this;
 
-}.apply({}||board);
+}.apply(board||{});

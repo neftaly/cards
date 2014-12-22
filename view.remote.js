@@ -1,6 +1,6 @@
 /*
 
-Handles messaging.
+Handles remote peer interaction.
 
 */
 
@@ -9,14 +9,11 @@ Handles messaging.
 // Init controller (for async)
 var view = view || function () { return this; }.apply({});
 
-view.web = function () {
+view.remote = function () {
 
-	// Observe changes to the gamestate
-	Object.observe(board.state, function(changes) {
-		changes.forEach(function(change) {
-			//console.log(change.type, change.name, change.oldValue);
-    	});
-	});
+	// Identify the context when changing the model
+	var context = "remote"; 
+
 
 	return this;
-}.apply({}||view.web);
+}.apply(view.remote||{});

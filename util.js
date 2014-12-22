@@ -1,3 +1,11 @@
+/*
+
+Utility code
+
+Staging ground only - code should be moved into more appropriate places
+
+*/
+
 "use strict";
 
 var util = function () {
