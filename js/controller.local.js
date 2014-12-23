@@ -55,8 +55,8 @@ interact.js config
 			onmove: function (event) {
 				var target = event.target,
 					// keep the dragged position in the data-x/data-y attributes
-					x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx,
-					y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+					x = (parseFloat(target.getAttribute("data-x")) || 0) + Math.floor(event.dx),
+					y = (parseFloat(target.getAttribute("data-y")) || 0) + Math.floor(event.dy);
 
 				// translate the element
 				target.classList.add("active");
@@ -79,7 +79,7 @@ interact.js config
 		})
 		// enable inertial throwing
 		.inertia(true)
-		// keep the element within the area of it"s parent
+		// keep the element within the area of it's parent
 		.restrict({
 			drag: "parent",
 			endOnly: true,

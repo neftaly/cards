@@ -15,3 +15,9 @@ controller.remote = function () {
 
 	return this;
 }.apply(controller.remote||{});
+
+
+/*
+simulate a remote move:
+controller.remote.crud.update("11", { x: "100" });
+*/

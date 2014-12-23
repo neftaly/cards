@@ -6,7 +6,6 @@ Model state and state event handler code
 
 	* add
 	* update
-	* update_(property name)
 
 */
 
@@ -18,9 +17,11 @@ var model = function () {
 	this.dispatchEvent = function (context, eventName, target) {
 		if (typeof this.events[eventName] === "undefined") return false;
 		this.events[eventName].forEach(function (handler) { 
-			handler(context, target); 
+			// Defer event processing
+			setTimeout(function () {
+				handler(context, target); 
+			}, 0);
 		});
-		return true;
 	}
 
 
@@ -28,11 +29,11 @@ var model = function () {
 	this.addEventListener = function (eventName, handler) {
 		if (typeof this.events[eventName] === "undefined") {
 			this.events[eventName] = [];
-			var eventDidNotExist = true;
+			var eventNotExist = true;
 		}
 		this.events[eventName].push(handler);
 		// If we had to create a new event, return false
-		return (eventDidNotExist)? false: true;
+		return (!eventNotExist);
 	}
 
 

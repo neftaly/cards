@@ -31,7 +31,6 @@ var model = function () {
 			// Iterate through each property
 			Object.keys(piece).forEach(function (property) {
 				model.state[uuid][property] = piece[property];
-				model.dispatchEvent(context, "update_" + property, model.state[uuid]);
 			});
 			model.dispatchEvent(context, "update", model.state[uuid]);
 		});
