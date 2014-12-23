@@ -22,7 +22,6 @@ var model = function () {
 			rotateX: piece.rotateX || 0, /* AVOID USING - Top-to-bottom flip, in deg */
 			rotateY: piece.rotateY || 0, /* Left-to-right flip, in deg */
 			rotateZ: piece.rotateZ || 0, /* Clockwise rotation, in deg */
-			element: piece.element || false
 		}
 	}
 

@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<title>cards</title>
+		<meta charset="UTF-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- external libs -->
+		<script type="text/javascript" src="interact.js/interact.js"></script>
+		<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.8.0/ramda.js"></script>-->
+		<script src="https://peer-server.herokuapp.com/peer.min.js"></script>
+
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
+
+		<!-- app code -->
+		<script type="text/javascript" src="js/util.js"></script>
+
+		<script type="text/javascript" src="js/model.js"></script>
+		<script type="text/javascript" src="js/model.actions.js"></script>
+		<script type="text/javascript" src="js/model.events.js"></script>
+
+		<script type="text/javascript" src="js/view.js"></script>
+		<script type="text/javascript" src="js/view.local.js"></script>
+		<script type="text/javascript" src="js/view.remote.js"></script>
+
+		<script type="text/javascript" src="js/controller.js"></script>
+		<script type="text/javascript" src="js/controller.local.js"></script>
+		<script type="text/javascript" src="js/controller.remote.js"></script>
+
+		<script type="text/javascript" src="js/init.js" defer></script>
+
+		<!-- app stylesheets -->
+		<link type="text/css" rel="stylesheet" href="board.css">
+
+	</head>
+
+	<body>
+
+		<div id="gameboard"></div>
+		<div class="private">Private play area</div>
+
+<script>
+// https://github.com/MrSwitch
+
+window.location.hash = (window.location.hash || parseInt(Math.random()*1e4,10).toString(16));
+var session = Peer.initSession().connect(window.location.hash);
+
+session.on("message", function(event){
+	var object = event.data;
+	controller.remote.crud.update(object.uuid, { x: object.x, y: object.y });
+});
+
+
+// draw piece whenever a new piece is added
+model.addEventListener("update", function (context, object) {
+	if (context !== "remote") {
+		objectDetails = {
+			blame: "github.com/neftaly/cards (promise I'll stop soon!)",
+			uuid: object.uuid,
+			x: object.x,
+			y: object.y
+		}
+		session.send("message", {data:objectDetails});
+	}
+}.bind(this));
+
+</script>
+
+	</body>
+
+</html>

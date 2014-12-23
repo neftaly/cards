@@ -14,8 +14,9 @@ view.local = function () {
 		// Setup DOM element
 		var element = document.createElement(piece.class);
 		model.element.appendChild(element);
+		element.id = piece.uuid;
+		element.className = piece.type + " draggable";
 		element.tabindex = 0;
-		piece.element = element;
 
 		// Set DOM element attributes
 		this.update(piece);
@@ -26,9 +27,7 @@ view.local = function () {
 	this.update = function (piece) {
 
 		// Setup DOM element
-		var element = piece.element;
-		element.className = piece.type + " draggable";
-		element.id = piece.uuid;
+		var element = document.getElementById(piece.uuid);
 
 		element.style.left = piece.x + "px";
 		element.style.top = piece.y + "px";
@@ -42,7 +41,7 @@ view.local = function () {
 		if (context !== this.context) this.draw(object);
 	}.bind(this));
 
-		// draw piece whenever a new piece is added
+	// draw piece whenever a new piece is added
 	model.addEventListener("update", function (context, object) {
 		if (context !== this.context) {
 			console.log("up", object);
