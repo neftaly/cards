@@ -35,6 +35,7 @@ var model = function () {
 	this.state = {}; // Gamestate object
 	this.events = {}; // State change events
 
+	this.session = false; // WebRTC session
 
 	return this;
 }.apply(model||{});

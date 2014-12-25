@@ -4,7 +4,8 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: "Roboto", sans-serif;
-	perspective: 50%;
+	perspective: 100px;
+	-webkit-perspective: 100px;
 }
 
 #gameboard {

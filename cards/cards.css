@@ -18,8 +18,10 @@ card {
 }
 
 card:hover {
-	margin-top: -1rem;
-	box-shadow: 0 calc(1rem + 0.25rem) 1.75rem rgba(0,0,0,0.24);
+	Xmargin-top: -1rem;
+	-webkit-transform: translateZ(2px);
+
+	Xbox-shadow: 0 calc(1rem + 0.25rem) 1.75rem rgba(0,0,0,0.24);
 	-webkit-filter: saturate(150%);
 	margin-left: -0.1rem;
 	border: 0.2rem solid rgba(0,0,0,.24);	

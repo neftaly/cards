@@ -6,6 +6,13 @@ Not run until everything has loaded.
 
 */
 
+
+// Setup room name
+window.location.hash = (window.location.hash || util.randomString(8));
+	
+// Init WebRTC
+controller.remote.init(window.location.hash);
+
 initInteract();
 
 [

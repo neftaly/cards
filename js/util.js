@@ -25,6 +25,14 @@ var util = function () {
 		return UUID;
 	}
 
+	// Random string generator
+	this.randomString = function (length) {
+		var string = "";
+		for (var i = 0 ; i < length; i++) {
+			string += String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+		}
+		return string;
+	}
 	
 	/*
 	Convert object to assoc array

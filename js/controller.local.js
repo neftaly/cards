@@ -61,9 +61,12 @@ interact.js config
 				// translate the element
 				target.classList.add("active");
 				target.classList.add("interacting");
-				target.style.webkitTransform =
+				/*target.style.webkitTransform =
 				target.style.transform =
 					"translate(" + x + "px, " + y + "px)";
+				*/
+				target.style.left = x + "px";
+				target.style.top = y + "px";
 
 				// update the posiion attributes
 				target.setAttribute("data-x", x);
