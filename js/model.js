@@ -19,9 +19,9 @@ var model = function () {
 			x: piece.x || 0,
 			y: piece.y || 0,
 			z: piece.z || 0,
-			rotateX: piece.rotateX || 0, /* AVOID USING - Top-to-bottom flip, in deg */
-			rotateY: piece.rotateY || 0, /* Left-to-right flip, in deg */
-			rotateZ: piece.rotateZ || 0, /* Clockwise rotation, in deg */
+			rotateX: piece.rotateX || 0, /* Flip top-over-bottom, in deg */
+			rotateY: piece.rotateY || 0, /* Turn left-over-right, in deg */
+			rotateZ: piece.rotateZ || 0 /* Rotate clockwise, in deg */
 		}
 	}
 

@@ -4,24 +4,25 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: "Roboto", sans-serif;
-	perspective: 100px;
-	-webkit-perspective: 100px;
+	perspective: 500px;
+	-webkit-perspective: 500px;
+	background-color: black;
 }
 
 #gameboard {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 100%;
-	height: 100%;
+	width: 1000px;
+	height: 750px;
+	background-color: white;
 }
 
 .private {
-	z-index: -1;
-	height: 20rem;
-	width: 65rem;
-	top: 30rem;
-	left: 4rem;
+	height: 250px;
+	width: 900px;
+	top: 450px;
+	left: 50px;
 	text-align: center;
 	position: absolute;
 	background-color: #BBDEFB;

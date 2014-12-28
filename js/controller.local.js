@@ -13,6 +13,20 @@ controller.local = function () {
 	this.crud = new controller.crud(this.context);
 
 
+	// Turn a card over
+	this.turn = function(uuid) {
+		//var rotateY = (model.state[uuid].rotateY === 180)? 0: 180;
+		var rotateY = model.state[uuid].rotateY + 180;
+		this.crud.update(uuid, {rotateY: rotateY});
+	}.bind(this);
+
+	// Rotate a card to rotateZ (or +90deg if undefined)
+	this.rotate = function(uuid, rotateZ) {
+		if (typeof rotateZ === "undefined") rotateZ = model.state[uuid].rotateZ + 90;
+		this.crud.update(uuid, {rotateZ: rotateZ});
+	}.bind(this);
+
+
 	return this;
 }.apply(controller.local||{});
 
@@ -28,9 +42,9 @@ UI handler - needs to be rewritten
 
 function stopInteractingWithElement(event) {
 	// If element has been interacted with, rise it to the top
-	if (event.target.classList.contains("active")) {
+	/*if (event.target.classList.contains("active")) {
 		model.element.appendChild(event.target);
-	}
+	}*/
 	event.target.classList.remove("active");
 	event.target.classList.remove("interacting");
 }
@@ -47,6 +61,11 @@ interact.js config
 			event.target.classList.add("active");
 		})
 		.on("mouseout", stopInteractingWithElement)
+		.on("doubletap", function (event) {
+			var uuid = event.target.id || event.target.parentNode.id;
+			controller.local.turn(uuid);
+			//controller.local.rotate(uuid);
+		})
 		.draggable({
 			// allow dragging of multple elements at the same time
 			max: Infinity,

@@ -20,9 +20,14 @@ controller.remote = function () {
 		model.session.on("message", this.messageHandler);
 	}.bind(this);
 
+
+	// Handle updates from peers
 	this.messageHandler = function (message) {
-		var data = message.data;
-		this.crud.update(data.uuid, { x: data.x, y: data.y });
+		Object.keys(message.data).forEach(function (uuid) {
+			var piece = message.data[uuid];
+			// Object checking/filtering goes here
+			this.crud.update(piece.uuid, piece);
+		}.bind(this));
 	}.bind(this);
 
 	return this;

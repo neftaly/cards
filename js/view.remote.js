@@ -9,16 +9,21 @@ Handles remote peer interaction.
 view.remote = function () {
 	this.context = "remote";
 
-	// Send local updates to remote peers
-	// TODO: deltas, tick rates (setInterval), etc
-	model.addEventListener("update", function (context, object) {
-		if (context === "local") {
-			console.log(context, object);
-			var objectDetails = {
-				blame: "github.com/neftaly/cards (promise I'll stop soon!)",
+	// Send buffered local updates to peer
+	this.tick = function () {
+		// Don't send any updates if buffer is empty
+		if (Object.keys(buffer).length === 0) return false;
+		// Process buffer (delta encoding, etc)
+		var data = {};
+		Object.keys(buffer).forEach(function (objectId) {
+			var object = buffer[objectId];
+			data[object.uuid] = {
 				uuid: object.uuid,
 				x: object.x,
-				y: object.y
+				y: object.y,
+				rotateX: object.rotateX,
+				rotateY: object.rotateY,
+				rotateZ: object.rotateZ
 				/*
 				Also:
 				transforms
@@ -26,10 +31,24 @@ view.remote = function () {
 				innerhtml (or similar, for shared calculators/text fields/etc)
 				*/
 			}
-			model.session.send("message", {data:objectDetails});
-		}
+		});
+		// Send data to peers
+		model.session.send("message", {data:data});
+		// Reset the buffer
+		buffer = {}; 
+	}.bind(this);
+
+
+	// Add local updates to buffer
+	model.addEventListener("update", function (context, object) {
+		if (context !== "local") return false;
+		buffer[object.uuid] = object;
 	}.bind(this));
 
+
+	this.tickRate = 100; // Update time
+	var buffer = {}; // Output buffer
+	this.ticker = setInterval(this.tick, this.tickRate);
 
 	return this;
 }.apply(view.remote||{});
