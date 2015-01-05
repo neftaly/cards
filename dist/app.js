@@ -1,15 +1,15 @@
+"use strict";
+
 /*
 
-App init code. 
-
-Not run until everything has loaded.
+Main app code
 
 */
 
-
+/*
 // Setup room name
 window.location.hash = (window.location.hash || util.randomString(8));
-	
+
 // Init WebRTC
 controller.remote.init(window.location.hash);
 
@@ -34,3 +34,10 @@ initInteract();
 	}
 ]
 	.forEach(controller.remote.crud.add);
+*/
+
+
+
+var controller = require("./modules/controller");
+
+console.log(controller.hello(1));

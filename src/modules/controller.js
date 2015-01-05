@@ -34,3 +34,8 @@ var controller = function () {
 
 	return this; 
 }.apply(controller||{});
+
+
+export function hello(x) {
+	return x + "5";
+}
