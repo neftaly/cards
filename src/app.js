@@ -36,5 +36,5 @@ initInteract();
 
 
 
-import * as controller from "./modules/controller";
+import * as controller from "controller";
 console.log(controller.hello(1));

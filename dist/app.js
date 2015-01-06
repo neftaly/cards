@@ -38,6 +38,6 @@ initInteract();
 
 
 
-var controller = require("./modules/controller");
+var controller = require("./controller");
 
 console.log(controller.hello(1));
